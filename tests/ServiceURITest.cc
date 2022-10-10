@@ -73,3 +73,7 @@ TEST(ServiceURITest, testMultipleHostsMixed) {
     verifyServiceURI("pulsar://host1:6640,host2,host3:6660/path/to/namespace", PulsarScheme::PULSAR,
                      {"pulsar://host1:6640", "pulsar://host2:6650", "pulsar://host3:6660"});
 }
+TEST(ServiceURITest, IPV6) {
+    verifyServiceURI("pulsar://fd00:1234:5678:0:1::5:6650", PulsarScheme::PULSAR, {"pulsar://fd00:1234:5678:0:1::5:6650"});
+    verifyServiceURI("pulsar://fd00:1234:5678:0:1::5:6650/", PulsarScheme::PULSAR, {"pulsar://fd00:1234:5678:0:1::5:6650"});
+}
